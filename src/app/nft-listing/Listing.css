@@ -1,0 +1,115 @@
+.MetaData h5,
+.minting_proccess {
+  color: rgba(201, 195, 243, 0.583);
+}
+
+.instance_metadata {
+  color: rgb(201, 195, 243);
+}
+
+.nft_receiver_address input {
+  background-color: rgba(201, 195, 243, 0.583);
+  color: #0f0823;
+}
+
+/* ------------------------------ listing-page ----------------------------- */
+.nft_listing {
+  display: flex;
+  scroll-behavior: smooth;
+  scrollbar-width: 0;
+}
+.nftType {
+  background-color: rgba(201, 195, 243, 0.44);
+  color: rgb(201, 195, 243);
+}
+
+.categories {
+  cursor: pointer;
+  background-color: rgba(201, 195, 243, 0.144);
+  color: rgb(201, 195, 243);
+}
+
+.gradient-text {
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+#trending_nft_box .gradient-text {
+  background-image: linear-gradient(
+    133deg,
+    rgb(163, 125, 238) 0%,
+    rgb(69, 72, 227) 28%,
+    rgba(11, 53, 233, 1) 100%
+  );
+}
+
+#artsnft_box .gradient-text {
+  background-image: linear-gradient(
+    to right,
+    #f36542,
+    #ff9068,
+    #ffd72a,
+    #a8eb12,
+    #08f7fe,
+    #09fbd3,
+    #fe6f9e,
+    #a193e8
+  );
+}
+
+#musicnft_box .gradient-text {
+  background-image: linear-gradient(
+    133deg,
+    rgba(131, 58, 180, 1) 0%,
+    rgba(29, 79, 253, 1) 0%,
+    rgba(92, 103, 223, 1) 0%,
+    rgba(231, 168, 225, 1) 0%,
+    rgba(231, 116, 232, 1) 27%,
+    rgba(77, 90, 235, 1) 53%
+  );
+}
+
+#collectiblesnft_box .gradient-text {
+  background-image: linear-gradient(
+    133deg,
+    rgba(174, 188, 255, 1) 0%,
+    rgba(173, 185, 236, 1) 35%,
+    rgb(232, 235, 248) 67%,
+    rgba(255, 255, 255, 1) 98%
+  );
+}
+
+#sportnft_box .gradient-text {
+  background-image: linear-gradient(
+    133deg,
+    rgb(19, 200, 241) 0%,
+    rgba(181, 192, 238, 1) 34%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+#animenft_box .gradient-text {
+  background-image: linear-gradient(
+    133deg,
+    rgba(150, 155, 156, 1) 0%,
+    rgba(251, 251, 251, 1) 34%,
+    rgba(255, 255, 255, 1) 100%
+  );
+}
+
+#carsnft_box .gradient-text {
+  background-image: linear-gradient(
+    133deg,
+    rgba(186, 1, 1, 1) 0%,
+    rgba(61, 39, 20, 1) 61%
+  );
+}
+
+/* ------------------------------------ nft_instance -------------------------- */
+.NFTImage {
+  max-width: 40vw;
+}
+
+.nft_instance_info {
+  max-width: 40vw;
+}

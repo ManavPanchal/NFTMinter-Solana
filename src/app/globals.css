@@ -1,33 +1,87 @@
+@import url('https://fonts.googleapis.com/css2?family=Staatliches&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
-:root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
-  }
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
 body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
+  background-color: #0f0823;
+  color: white;
 }
 
-@layer utilities {
-  .text-balance {
-    text-wrap: balance;
-  }
+.ConnectWallet_btn:hover,
+.mint_btn:hover {
+  color: #396fb4;
 }
+input {
+  color: #0f0823;
+}
+
+/* ---------------------------- navbar -------------------------------------- */
+
+.app_name {
+  font-family: 'Staatliches', cursive;
+  color: rgb(192, 212, 255);
+}
+
+/* ------------------------------------ home ------------------------------------- */
+.nft_box {
+  background: rgb(201, 195, 243);
+}
+
+/* ------------------------------------------ create Nft Box_-------------------- */
+
+.blockchain_selector,
+.network_selector {
+  background-color: rgba(201, 195, 243, 0.329);
+}
+select.blockchain_selector option,
+select.network_selector option {
+  width: 200px;
+  height: 50px;
+  padding: 10px 0;
+}
+
+.file_input {
+  background-color: rgb(201, 195, 243);
+  color: #0f0823;
+  cursor: pointer;
+}
+
+label span {
+  color: red;
+}
+
+input {
+  width: 900px;
+  height: 40px;
+  border: 1px solid black;
+  font-size: 20px;
+}
+
+/* ----------------------------- wallet Box ------------------------------------- */
+.wallet_box {
+  background: rgb(201, 195, 243);
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.wallets {
+  box-shadow: 0 0 5px 2px rgb(0 0 0 / 0.1);
+  background: #0f0823fc;
+}
+
+.wallet_info h2 {
+  color: #0f0823;
+}
+
+/* .web3_wallet:hover{
+    box-shadow:  0 0 5px 2px rgb(0 0 0 / 0.1);
+} */
