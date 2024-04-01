@@ -10,13 +10,9 @@ export default function Home() {
             Mint Your Own Unique NFTs Easily with NFTMinter
           </p>
           <p className="breack-word text-lg text-slate-400">
-            Create and own one-of-a-kind digital assets with NFTminter. Our
-            platform allows you to easily mint NFTs and unleash your creativity.
-            Whether you're an artist, musician, or content creator, NFTminter
-            empowers you to showcase your work and engage with your fans like
-            never before. Join the NFT revolution and start minting your own
-            tokens now.
-            {/* "Create and Sell Your Own Customizable NFTs with Just a Few Clicks Using Our User-Friendly Platform. Get Started Now!" */}
+            {
+              "Create and own one-of-a-kind digital assets with NFTminter. Our platform allows you to easily mint NFTs and unleash your creativity. Whether you're an artist, musician, or content creator, NFTminter empowers you to showcase your work and engage with your fans like never before. Join the NFT revolution and start minting your own tokens now."
+            }
           </p>
           <Link href="/nft-listing">
             <button className="mint_btn w-128 h-12 rounded-xl text-center border border-blue-600">

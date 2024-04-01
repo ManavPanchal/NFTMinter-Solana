@@ -48,8 +48,6 @@ export const pinFileToIPFS = async (metadata) => {
   });
   fileData.append('pinataOptions', pinataOptions);
 
-  console.log(process.env.NEXT_PUBLIC_PINATA_JWT);
-
   try {
     const res = await axios.post(
       'https://api.pinata.cloud/pinning/pinFileToIPFS',
