@@ -1,86 +1,33 @@
 'use client';
 import React, { useCallback } from 'react';
 import { useParams } from 'next/navigation';
-import { NFTData, programId } from '@/utils/constant';
+import { NFTData } from '@/utils/constant';
 import { useConnection, useWallet } from '@solana/wallet-adapter-react';
-import { AnchorProvider, BN, Program, web3 } from '@coral-xyz/anchor';
-import idl from '@/utils/IDL/single-nft.json';
-import { getIpfsToUrl, getRandomNumberU64 } from '@/utils/helper';
-import { getMethodBuilder } from '@/utils/anchor-method-builder';
-import { getATA, getPDA } from '@/utils/anchor';
-import { MPL_TOKEN_METADATA_PROGRAM_ID } from '@metaplex-foundation/mpl-token-metadata';
-import { PublicKey } from '@solana/web3.js';
+import useTokenProgram from '@/hook/useTokenProgram';
+import { getIpfsToUrl } from '@/utils/helper';
 
 function NFTInstance() {
-  console.log({ idl });
   const params = useParams();
-
-  if (!params) return;
-  const id = params?.id;
+  const { connected } = useWallet();
+  const { createSingleNft } = useTokenProgram();
+  const id = params?.id || 1;
   const Nft = NFTData[id];
-
-  const { connection } = useConnection();
-  const { publicKey, signAllTransactions, signTransaction, connected } =
-    useWallet();
 
   const middleware = useCallback(async () => {
     if (connected) {
-      const anchorWallet = { publicKey, signAllTransactions, signTransaction };
-      const anchorProvider = new AnchorProvider(connection, anchorWallet, {
-        skipPreflight: true,
-        commitment: 'finalized',
-      });
-
-      const randomNumber = getRandomNumberU64();
-      const program = new Program(
-        idl,
-        new web3.PublicKey(programId),
-        anchorProvider,
-      );
-      const uri = getIpfsToUrl(Nft?.ipfs);
-
-      const mint = getPDA(['mint', randomNumber], programId).publicKey;
-      console.log(mint.toString());
-
-      const methodBuilder = getMethodBuilder(
-        program,
-        'createSingleNft',
-        [
-          new BN(randomNumber),
-          Nft?.name,
-          Nft?.name,
-          uri,
-          0.48830169250503963,
-          new BN(randomNumber),
-        ],
-        {
-          authority: publicKey,
-          payer: publicKey,
-          mint,
-          tokenAccount: await getATA({ mint, owner: publicKey }),
-          masterEditionAccount: getPDA(
-            [
-              'metadata',
-              new PublicKey(MPL_TOKEN_METADATA_PROGRAM_ID),
-              mint,
-              'edition',
-            ],
-            MPL_TOKEN_METADATA_PROGRAM_ID,
-          ).publicKey,
-          nftMetadata: getPDA(
-            ['metadata', new PublicKey(MPL_TOKEN_METADATA_PROGRAM_ID), mint],
-            MPL_TOKEN_METADATA_PROGRAM_ID,
-          ).publicKey,
-        },
-      );
       try {
-        const signature = await methodBuilder.rpc();
+        const signature = await createSingleNft({
+          name: Nft.name,
+          uri: getIpfsToUrl(Nft?.ipfs),
+        });
         console.log({ signature });
       } catch (error) {
         console.error(error);
       }
     }
-  }, [connected, publicKey, connection]);
+  }, [connected, createSingleNft, Nft]);
+
+  if (!params.id) return <></>;
 
   return (
     <div className="nftInstance my-12 flex m-4 justify-center gap-14 items-center p-4">

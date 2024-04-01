@@ -1,7 +1,6 @@
 import Link from 'next/link';
 
 function NFTCard({ id, name, image, description, type }) {
-  console.log({ image });
   return (
     <Link href={`/nft-instance/${id}`}>
       <div className="nft_box w-80 h-fit relative rounded-lg shadow-lg text-black text-xs flex flex-col gap-3 pb-4">

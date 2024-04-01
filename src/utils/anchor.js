@@ -5,7 +5,6 @@ export const getATA = ({ mint, owner }) =>
   getAssociatedTokenAddress(mint, owner);
 
 export const getPDA = (seeds, programId) => {
-  console.log({ seeds });
   const bufferSeeds = [];
   for (let seed of seeds) {
     if (typeof seed === 'string') {
@@ -18,8 +17,7 @@ export const getPDA = (seeds, programId) => {
       bufferSeeds.push(seed.toBuffer());
     }
   }
-  // console.log(...bufferSeeds);
-  console.log({ typeof: typeof programId });
+
   let res = web3.PublicKey.findProgramAddressSync(
     bufferSeeds,
     typeof programId === 'string' ? new web3.PublicKey(programId) : programId,
